@@ -1,51 +1,30 @@
 import random
 
 def welcome_scene():
-    print("Välkommen till Murder Mystery!") # Välkommen scen 
-    print("Du står framför tre dörrar. Varje dörr har en uppgift.") 
+    print("Välkommen till Murder Mystery!")  # Välkommen scen
+    print("Du står framför tre dörrar. Varje dörr har en uppgift.")
     print("Du har bara tre liv. Förlorar du alla, är spelet över.")
 
 def door_task_1():
     print("Dörr 1: Hitta mördarens egenskaper!")
     traits = ["brunett", "lång", "biffig"]
-    
+
     correct_answers = traits
 
-    attempts = 3
-    while attempts > 0:
-        answer = input("Vilket hår färg har mördaren?").lower()
-        if answer in correct_answers:
-            correct_answers.remove(answer)
-            print("Rätt svar! Fortsätt till nästa fråga.")
-        else:
+    # Rätta svar
+    for trait in traits:
+        answer = input(f"Vilket {trait} har mördaren? ").lower()
+        if answer != "ja":
             print("Fel svar! Du förlorar ett liv.")
-            attempts -= 1
+            return False
 
-        answer = input("Är han lång eller kort?").lower()
-        if answer in correct_answers: 
-            correct_answers.remove(answer)
-            print("Rätt svar! Fortsätt till nästa fråga.")
-        else:
-            print("Fel svar! Du förlorar ett liv.")
-            attempts -= 1
-        
-        answer = input("Är mördaren smal eller biffig?").lower()
-        if answer in correct_answers:
-            correct_answers.remove(answer)
-            print("Rätt svar! Du har klarat uppgifter till dörr 1")
-            return True
-        else:
-            print("Fel svar! Du förlorar ett liv.")
-            attempts -= 1
+    print("Rätt svar! Du har klarat uppgifterna till dörr 1")
+    return True
 
-    print("Du förlorade alla dina liv. Spelet är över.")
-    return False
-    
 def door_task_2():
     print("Dörr 2: Fälla! Du har triggat en fälla och förlorar ett liv.")
     print("Du måste starta om spelet.")
     return False
-
 
 def door_task_3():
     print("Dörr 3: Lösa tre uppgifter för att hitta mördaren.")
@@ -55,14 +34,14 @@ def door_task_3():
         "Hade han kniv?"
     ]
 
-    correct_answers = random.sample(tasks, 2)
+    correct_answers = tasks
 
     attempts = 3
     while attempts > 0 and tasks:
         task = tasks.pop(0)
         print(f"Uppgift: {task}")
         answer = input("Ditt svar (ja/nej): ").lower()
-        
+
         if answer == "ja" or answer == "nej":
             if answer == "ja" and task in correct_answers:
                 correct_answers.remove(task)
@@ -80,10 +59,6 @@ def door_task_3():
         print("Du förlorade alla dina liv. Spelet är över.")
         return False
 
-def capture_murderer():
-    print("Du har fångat mördaren och löst mysteriet. Grattis!")
-
-
 def main():
     welcome_scene()
 
@@ -98,6 +73,7 @@ def main():
         elif answer == "2":
             door_2_result = door_task_2()
             if door_2_result:
+                print("Fälla, du har blivit fångad av mördaren! Försök gärna köra om.")
                 break
         elif answer == "3":
             door_3_result = door_task_3()
