@@ -6,4 +6,9 @@ Välkommen till Murder Mystery Game, ett enkelt textbaserat spel där du försö
 
 Spelet är skrivet i Python och använder enkla logiska villkor och loopar för att skapa interaktivitet. Du kan själv anpassa och utöka spelet genom att redigera koden.
 
+spelen heter murder mystery. Spelen handlar om en mord som skedde i stan.
+Användaren ska ta reda på vem som är mördare. #Spelen innehåller utmannade frågor som handlar om mördare, 
+hur han ser ut osv. Man ska välja mellan 3 dörrar. Varje dörr har sina egna utmanningar. På en dör ska man dö. 
+resten innehåller frågor om mördaren. Om man svarar fel då dör man. 
+
 Hoppas du har kul när du löser mysteriet!
