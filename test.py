@@ -1,2 +1,0 @@
-# Testar 
-print('Hello WorlD!')
