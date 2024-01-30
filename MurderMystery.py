@@ -2,24 +2,52 @@
 def welcome_scene():
     print("Välkommen till Murder Mystery!")  # Välkommen scen
     print("Du befinner dig i ett hus där du har 3 olika dörr")
-    print("Du har bara tre liv. Förlorar du alla, är spelet över.")
+    print("Det är endast tre liv som gäller! Förlorar du alla, är spelet över.")
 
 # Funktion för dörruppgift 1
 def door_task_1():
     print("Dörr 1: Hitta mördarens egenskaper!")
-    traits = ["hårfärg", "längd", "typ av kropp"]
+    tasks = ["Var han brunnet?", "Var han lång eller kort?", "Var han biffig eller skinny?", ]
 
     # Loopa igenom och jämför svar med rätta svar
-    for trait in traits:
-        answer = input(f"Vad för {trait} har mördaren? ").lower()
-        if answer == "brunett, lång, biffig":
+    attempts = 3
+    while attempts > 0 and tasks:
+        task = tasks.pop(0)
+        print(f"Uppgift: {task}")
+        answer = input("Ditt svar (ja/nej):").lower()
+
+        if answer == "ja":
+            print("Rätt svar! Fortsätt till nästa fråga.")
+        else:
             print("Fel svar! Du förlorar ett liv.")
-            return True
+            attempts = attempts - 1
+        break
 
-        print("Rätt svar! Fortsätt vidare till nästa fråga.")
+    attempts = 3
+    while attempts > 0 and tasks:
+        task = tasks.pop(0)
+        print(f"Uppgift: {task}")
+        answer = input("Ditt svar (lång/kort):").lower()
 
-    print("Rätt svar! Du har klarat uppgifterna till dörr 1")
-    return True
+        if answer == "lång":
+            print("Rätt svar! Fortsätt till nästa fråga.")
+        else:
+            print("Fel svar! Du förlorar ett liv.")
+            attempts = attempts - 1
+        break
+
+    attempts = 3
+    while attempts > 0 and tasks:
+        task = tasks.pop(0)
+        print(f"Uppgift: {task}")
+        answer = input("Ditt svar (biffig/skinny):").lower()
+
+        if answer == "biffig":
+            print("Rätt svar! Fortsätt till nästa fråga.")
+        else:
+            print("Fel svar! Du förlorar ett liv.")
+            attempts = attempts - 1
+        break
 
 # Funktion för dörruppgift 2
 def door_task_2():
@@ -29,8 +57,8 @@ def door_task_2():
 
 # Funktion för dörruppgift 3
 def door_task_3():
-    print("Dörr 3: Lösa tre uppgifter för att hitta mördaren.")
-    tasks = ["Använde han pistol?", "Åkte han BIL eller MOPPED?", "Hade han YXA eller KNIV?"]
+    print("Dörr 3: Lös tre uppgifter för att hitta mördaren.")
+    tasks = ["Använde han pistol?", "Åkte han bil eller mopped?", "Hade han yxa eller kniv?"]
 
     correct_answers = tasks
 
@@ -66,7 +94,6 @@ def door_task_3():
         task = tasks.pop(0)
         print(f"Uppgift: {task}")
         answer = input("Ditt svar (yxa/kniv):").lower()
-
         if answer == "kniv":
             print("Rätt svar! Fortsätt till nästa fråga.")
         else:
@@ -76,7 +103,7 @@ def door_task_3():
     # Loopa igenom uppgifter och svar för de två följande frågorna
     
     # Slutligen, bedöm om spelaren har klarat uppgifterna
-    if attempts > 0:
+    if attempts > 3:
         print("Bra jobbat! Du har hittat mördaren. Du får ett vapen!")
         return True
     else:
