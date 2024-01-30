@@ -47,6 +47,32 @@ def door_task_3():
             print("Fel svar! Du förlorar ett liv.")
             attempts = attempts - 1
         break
+
+    attempts = 3
+    while attempts > 0 and tasks:
+        task = tasks.pop(0)
+        print(f"Uppgift: {task}")
+        answer = input("Ditt svar (bil/mopped):").lower()
+
+        if answer == "bil":
+            print("Rätt svar! Fortsätt till nästa fråga.")
+        else:
+            print("Fel svar! Du förlorar ett liv.")
+            attempts = attempts - 1
+        break
+
+    attempts = 3
+    while attempts > 0 and tasks:
+        task = tasks.pop(0)
+        print(f"Uppgift: {task}")
+        answer = input("Ditt svar (yxa/kniv):").lower()
+
+        if answer == "kniv":
+            print("Rätt svar! Fortsätt till nästa fråga.")
+        else:
+            print("Fel svar! Du förlorar ett liv.")
+            attempts = attempts - 1
+        break
     # Loopa igenom uppgifter och svar för de två följande frågorna
     
     # Slutligen, bedöm om spelaren har klarat uppgifterna
