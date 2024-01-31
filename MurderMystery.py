@@ -57,7 +57,7 @@ def door_task_2():
 
 # Funktion för dörruppgift 3
 def door_task_3():
-    print("Dörr 3: Lös tre uppgifter för att hitta mördaren.")
+    print("DÖRR 3: Lös tre uppgifter för att hitta mördaren.")
     tasks = ["Använde han pistol?", "Åkte han bil eller mopped?", "Hade han yxa eller kniv?"]
 
     correct_answers = tasks
@@ -103,9 +103,8 @@ def door_task_3():
             print("Fel svar! Du förlorar ett liv.")
             attempts = attempts - 1
         break
-
     # Bedöm om spelaren har klarat uppgifterna
-    if attempts > 0:
+    if attempts > 2:
         print("Bra jobbat! Du har hittat mördaren. Du får ett vapen!")
         return True
     else:
